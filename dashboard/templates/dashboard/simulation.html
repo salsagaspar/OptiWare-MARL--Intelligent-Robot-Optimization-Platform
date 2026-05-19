@@ -1,0 +1,307 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Simulasi ROI RL{% endblock %}
+{% block page_title %}Simulasi ROI & Kelayakan Investasi{% endblock %}
+{% block page_subtitle %}Simulasikan penghematan finansial penerapan Reinforcement Learning secara interaktif{% endblock %}
+
+{% block extra_css %}
+<style>
+    .sim-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 13px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .slider-row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .slider-input {
+        flex-grow: 1;
+        accent-color: var(--accent-blue);
+        cursor: pointer;
+    }
+
+    .slider-value {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        min-width: 80px;
+        text-align: right;
+        color: var(--accent-blue);
+    }
+
+    /* Output card styling */
+    .metric-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .out-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-glass);
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .out-card.accent-success {
+        border-color: rgba(46, 204, 113, 0.3);
+        background: rgba(46, 204, 113, 0.03);
+    }
+
+    .out-title {
+        font-size: 12px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+
+    .out-value {
+        font-family: 'Outfit', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .out-card.accent-success .out-value {
+        color: var(--accent-green);
+    }
+
+    .plots-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .plot-card {
+        text-align: center;
+    }
+
+    .plot-card img {
+        max-width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="sim-layout">
+        
+        <!-- Left Column: Input Sliders -->
+        <div class="glass-card">
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--border-glass); padding-bottom: 10px;">
+                <i class="fa-solid fa-sliders"></i> Sesuaikan Parameter Finansial
+            </h2>
+            
+            <!-- Fleet Size -->
+            <div class="form-group">
+                <label for="fleet-size">Ukuran Armada (Robot)</label>
+                <div class="slider-row">
+                    <input type="range" id="fleet-size" min="50" max="1000" step="10" value="300" class="slider-input" oninput="recalculate()">
+                    <span id="fleet-size-val" class="slider-value">300</span>
+                </div>
+            </div>
+
+            <!-- Initial CapEx -->
+            <div class="form-group">
+                <label for="capex">Investasi Awal (CapEx - USD)</label>
+                <div class="slider-row">
+                    <input type="range" id="capex" min="100000" max="2000000" step="50000" value="500000" class="slider-input" oninput="recalculate()">
+                    <span id="capex-val" class="slider-value">$500,000</span>
+                </div>
+            </div>
+
+            <!-- Annual OpEx -->
+            <div class="form-group">
+                <label for="opex">Biaya Operasional Tahunan (OpEx - USD)</label>
+                <div class="slider-row">
+                    <input type="range" id="opex" min="10000" max="200000" step="5000" value="50000" class="slider-input" oninput="recalculate()">
+                    <span id="opex-val" class="slider-value">$50,000</span>
+                </div>
+            </div>
+
+            <!-- Indirect Breakdown Cost -->
+            <div class="form-group">
+                <label for="indirect-cost">Biaya Tidak Langsung per Kerusakan (USD)</label>
+                <div class="slider-row">
+                    <input type="range" id="indirect-cost" min="500" max="10000" step="100" value="2500" class="slider-input" oninput="recalculate()">
+                    <span id="indirect-cost-val" class="slider-value">$2,500</span>
+                </div>
+            </div>
+
+            <!-- Baseline Breakdown Count -->
+            <div class="form-group">
+                <label for="breakdown-count">Rata-rata Kerusakan per Robot / Tahun (Baseline)</label>
+                <div class="slider-row">
+                    <input type="range" id="breakdown-count" min="1" max="5" step="1" value="2" class="slider-input" oninput="recalculate()">
+                    <span id="breakdown-count-val" class="slider-value">2 kali</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Live Output Metrics -->
+        <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--border-glass); padding-bottom: 10px;">
+                    <i class="fa-solid fa-calculator"></i> Analisis Kelayakan Keluar (Live)
+                </h2>
+                
+                <div class="metric-row">
+                    <div class="out-card">
+                        <div class="out-title">Total Biaya Armada (Baseline RTF)</div>
+                        <div id="out-rtf-total" class="out-value">$3,252,657</div>
+                    </div>
+                    <div class="out-card">
+                        <div class="out-title">Total Biaya Armada (RL PM)</div>
+                        <div id="out-rl-total" class="out-value">$1,861,131</div>
+                    </div>
+                </div>
+
+                <div class="metric-row">
+                    <div class="out-card accent-success">
+                        <div class="out-title">Penghematan Bersih / Tahun</div>
+                        <div id="out-net-savings" class="out-value">$1,341,526</div>
+                    </div>
+                    <div class="out-card accent-success">
+                        <div class="out-title">NPV Proyek (3 Tahun @10%)</div>
+                        <div id="out-npv" class="out-value">$2,836,177</div>
+                    </div>
+                </div>
+
+                <div class="metric-row">
+                    <div class="out-card">
+                        <div class="out-title">Internal Rate of Return (IRR)</div>
+                        <div id="out-irr" class="out-value">262.7%</div>
+                    </div>
+                    <div class="out-card">
+                        <div class="out-title">Payback Period (Balik Modal)</div>
+                        <div id="out-payback" class="out-value">4.5 Bulan</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="out-card accent-success" style="text-align: center; padding: 20px;">
+                <div class="out-title">Return on Investment (ROI 3-Tahun)</div>
+                <div id="out-roi" class="out-value" style="font-size: 28px;">704.9%</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Plots and Visuals -->
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 20px; margin-top: 40px; margin-bottom: 20px;">Grafik Pendukung Simulasi</h2>
+    <div class="plots-grid">
+        <div class="glass-card plot-card">
+            <h3 style="font-size:14px; margin-bottom:15px; color:var(--text-muted);">ALOKASI PENGELUARAN ARMADA TAHUNAN</h3>
+            <img src="{% static 'dashboard/plots/fleet_cost_comparison.png' %}" alt="Fleet Cost Comparison">
+        </div>
+        <div class="glass-card plot-card">
+            <h3 style="font-size:14px; margin-bottom:15px; color:var(--text-muted);">KURVA AKUMULASI ALIRAN KAS (PAYBACK CURVE)</h3>
+            <img src="{% static 'dashboard/plots/cumulative_cash_flow_curve.png' %}" alt="Payback Curve">
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Live Financial Recalculation Formulas
+    function recalculate() {
+        // Read input elements
+        const fleetSize = parseInt(document.getElementById('fleet-size').value);
+        const capex = parseInt(document.getElementById('capex').value);
+        const opex = parseInt(document.getElementById('opex').value);
+        const indirectCost = parseInt(document.getElementById('indirect-cost').value);
+        const breakdownCount = parseInt(document.getElementById('breakdown-count').value);
+
+        // Update Slider Labels
+        document.getElementById('fleet-size-val').innerText = fleetSize;
+        document.getElementById('capex-val').innerText = '$' + capex.toLocaleString('en-US');
+        document.getElementById('opex-val').innerText = '$' + opex.toLocaleString('en-US');
+        document.getElementById('indirect-cost-val').innerText = '$' + indirectCost.toLocaleString('en-US');
+        document.getElementById('breakdown-count-val').innerText = breakdownCount + ' kali';
+
+        // Calculation variables (Based on notebook formulas)
+        const rtfDirectPerRobot = 5842.19;
+        const rtfTotalPerRobot = rtfDirectPerRobot + (breakdownCount * indirectCost);
+        const rtfFleetTotal = rtfTotalPerRobot * fleetSize;
+
+        const rlDirectPerRobot = 6203.77;
+        const rlFleetTotal = rlDirectPerRobot * fleetSize;
+
+        const yearlySavings = rtfFleetTotal - rlFleetTotal;
+        const netAnnualSavings = yearlySavings - opex;
+
+        // NPV Calculation (3 years @10%)
+        const discountRate = 0.10;
+        let npv = -capex;
+        for (let t = 1; t <= 3; t++) {
+            npv += net_savings_cf(netAnnualSavings) / Math.pow(1.0 + discountRate, t);
+        }
+
+        // IRR Calculation using Newton-Raphson
+        const cashFlows = [-capex, net_savings_cf(netAnnualSavings), net_savings_cf(netAnnualSavings), net_savings_cf(netAnnualSavings)];
+        const irrVal = calculateIRR(cashFlows) * 100;
+
+        // Payback Period (Months)
+        const paybackMonths = netAnnualSavings > 0 ? (capex / netAnnualSavings) * 12 : 99.9;
+
+        // ROI (3 years)
+        const roi = capex > 0 ? ((net_savings_cf(netAnnualSavings) * 3 - capex) / capex) * 100 : 0;
+
+        // Update UI Outputs
+        document.getElementById('out-rtf-total').innerText = '$' + Math.round(rtfFleetTotal).toLocaleString('en-US');
+        document.getElementById('out-rl-total').innerText = '$' + Math.round(rlFleetTotal).toLocaleString('en-US');
+        document.getElementById('out-net-savings').innerText = '$' + Math.round(netAnnualSavings).toLocaleString('en-US');
+        document.getElementById('out-npv').innerText = '$' + Math.round(npv).toLocaleString('en-US');
+        document.getElementById('out-irr').innerText = irrVal > 0 ? irrVal.toFixed(1) + '%' : '0.0%';
+        document.getElementById('out-payback').innerText = paybackMonths < 99 ? paybackMonths.toFixed(1) + ' Bulan' : 'N/A';
+        document.getElementById('out-roi').innerText = roi.toFixed(1) + '%';
+    }
+
+    function net_savings_cf(val) {
+        return val > 0 ? val : 0;
+    }
+
+    // Newton-Raphson solver for IRR
+    function calculateIRR(cfs) {
+        let r = 0.1; // initial guess
+        for (let i = 0; i < 100; i++) {
+            let npv = 0;
+            let d_npv = 0;
+            for (let t = 0; t < cfs.length; t++) {
+                npv += cfs[t] / Math.pow(1 + r, t);
+                d_npv -= t * cfs[t] / Math.pow(1 + r, t + 1);
+            }
+            if (Math.abs(npv) < 1e-6) return r;
+            if (d_npv === 0) return 0;
+            r = r - npv / d_npv;
+        }
+        return r;
+    }
+
+    // Trigger initial calculation
+    recalculate();
+</script>
+{% endblock %}

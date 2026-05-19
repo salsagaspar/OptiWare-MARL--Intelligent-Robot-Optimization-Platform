@@ -1,0 +1,289 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}AI Copilot{% endblock %}
+{% block page_title %}Warehouse AI Copilot{% endblock %}
+{% block page_subtitle %}Asisten pintar berbasis data untuk menganalisis status operasional gudang Anda{% endblock %}
+
+{% block extra_css %}
+<style>
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 220px);
+        min-height: 500px;
+        background: rgba(15, 19, 30, 0.4);
+        border: 1px solid var(--border-glass);
+        border-radius: 16px;
+        backdrop-filter: blur(var(--blur-radius));
+        overflow: hidden;
+    }
+
+    .chat-messages {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .message {
+        max-width: 75%;
+        padding: 14px 20px;
+        border-radius: 16px;
+        font-size: 14px;
+        line-height: 1.6;
+        word-wrap: break-word;
+    }
+
+    .msg-user {
+        align-self: flex-end;
+        background: linear-gradient(135deg, var(--accent-blue) 0%, rgba(52, 152, 219, 0.7) 100%);
+        color: #fff;
+        border-bottom-right-radius: 4px;
+    }
+
+    .msg-bot {
+        align-self: flex-start;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-main);
+        border: 1px solid var(--border-glass);
+        border-bottom-left-radius: 4px;
+    }
+
+    .chat-suggestions {
+        display: flex;
+        gap: 10px;
+        padding: 10px 24px;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(255,255,255,0.03);
+        background: rgba(255,255,255,0.01);
+    }
+
+    .suggest-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-glass);
+        color: var(--text-muted);
+        padding: 6px 14px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .suggest-btn:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+        border-color: rgba(255,255,255,0.15);
+    }
+
+    .chat-input-area {
+        padding: 20px 24px;
+        border-top: 1px solid var(--border-glass);
+        display: flex;
+        gap: 15px;
+        background: rgba(8, 11, 17, 0.5);
+    }
+
+    .chat-input {
+        flex-grow: 1;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-glass);
+        border-radius: 25px;
+        padding: 12px 24px;
+        color: #fff;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .chat-input:focus {
+        border-color: var(--accent-blue);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .send-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-green) 0%, rgba(46, 204, 113, 0.7) 100%);
+        border: none;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .send-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    }
+
+    /* Typing Indicator Animation */
+    .typing {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        padding: 10px 15px;
+        background: rgba(255,255,255,0.03);
+        border-radius: 12px;
+        align-self: flex-start;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        background-color: var(--text-muted);
+        border-radius: 50%;
+        animation: wave 1.2s infinite ease-in-out;
+    }
+
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes wave {
+        0%, 60%, 100% { transform: translateY(0); }
+        30% { transform: translateY(-6px); }
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="chat-container">
+        
+        <!-- Messages Area -->
+        <div class="chat-messages" id="chat-box">
+            <!-- Initial Greeting -->
+            <div class="message msg-bot">
+                Halo! Saya **Warehouse AI Copilot**. Saya terintegrasi secara langsung dengan basis data SQLite dan model analitik gudang Anda.
+                <br><br>
+                Anda bisa menanyakan status armada robot, detail biaya servis pemeliharaan, tingkat kepenuhan zona, atau pembacaan sensor IoT. Silakan pilih saran pertanyaan di bawah atau ketik langsung pertanyaan Anda!
+            </div>
+        </div>
+
+        <!-- Suggestion Chips -->
+        <div class="chat-suggestions">
+            <button class="suggest-btn" onclick="sendSuggestion('Berapa jumlah robot aktif saat ini?')">Berapa jumlah robot aktif?</button>
+            <button class="suggest-btn" onclick="sendSuggestion('Berapa total biaya servis maintenance?')">Berapa total biaya servis?</button>
+            <button class="suggest-btn" onclick="sendSuggestion('Tampilkan alarm sensor terbaru')">Tampilkan alarm sensor terbaru</button>
+            <button class="suggest-btn" onclick="sendSuggestion('Zona mana yang paling padat?')">Zona paling padat?</button>
+        </div>
+
+        <!-- Input Bar -->
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Tulis pertanyaan Anda di sini..." class="chat-input" onkeypress="handleKeyPress(event)">
+            <button class="send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const chatBox = document.getElementById('chat-box');
+    const chatInput = document.getElementById('chat-input');
+
+    // Parse markdown-like bold tags into HTML
+    function formatMessageText(text) {
+        return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                   .replace(/\n/g, '<br>')
+                   .replace(/- (.*?)(<br>|$)/g, '<li>$1</li>');
+    }
+
+    // Helper to auto-scroll chat
+    function scrollToBottom() {
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function appendMessage(text, isUser) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${isUser ? 'msg-user' : 'msg-bot'}`;
+        msgDiv.innerHTML = isUser ? text : formatMessageText(text);
+        chatBox.appendChild(msgDiv);
+        scrollToBottom();
+    }
+
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing';
+        typingDiv.id = 'typing-indicator';
+        typingDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        chatBox.appendChild(typingDiv);
+        scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typing-indicator');
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    function sendSuggestion(text) {
+        chatInput.value = text;
+        sendMessage();
+    }
+
+    function sendMessage() {
+        const messageText = chatInput.value.trim();
+        if (!messageText) return;
+
+        // Append user message
+        appendMessage(messageText, true);
+        chatInput.value = '';
+
+        // Show typing animation
+        showTypingIndicator();
+
+        // Call backend API
+        fetch("{% url 'dashboard:api_copilot' %}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({ message: messageText })
+        })
+        .then(response => response.json())
+        .then(data => {
+            removeTypingIndicator();
+            appendMessage(data.reply || 'Maaf, saya tidak menerima respons yang sesuai.', false);
+        })
+        .catch(err => {
+            removeTypingIndicator();
+            appendMessage('Terjadi kesalahan koneksi ke server.', false);
+            console.error(err);
+        });
+    }
+
+    // CSRF helper
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Format initial message
+    const firstMsg = chatBox.querySelector('.msg-bot');
+    firstMsg.innerHTML = formatMessageText(firstMsg.innerHTML);
+</script>
+{% endblock %}

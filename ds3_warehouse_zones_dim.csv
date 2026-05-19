@@ -1,0 +1,81 @@
+zone_id,zone_name,zone_type,area_sqm,capacity_units,current_occupancy_pct,aisle_count,rack_height_m,floor_level,temp_controlled,humidity_controlled,max_robots_allowed,lighting_level_lux,zone_status,hazmat_approved,last_inspection_date,supervisor_id,camera_count,access_level,avg_daily_robot_visits
+203407,Zone-A,Staging,2236,7092,88,27,4.5,1,0,0,17,787,Active,0,2024-10-06,10165,4,Hazmat Cleared,91
+205716,Zone-B,Staging,3555,8597,22,4,8.5,2,0,0,4,947,Inactive,0,2024-12-26,80670,3,Authorized Only,273
+205969,Zone-C,Receiving,1990,645,53,4,8.4,3,1,0,8,375,Active,0,2025-10-24,82711,19,Authorized Only,29
+205980,Zone-D,Staging,3912,3863,70,11,3.1,3,0,0,7,321,Under Maintenance,0,2024-09-12,24058,1,Restricted,240
+206536,Zone-E,Receiving,940,7541,8,17,4.6,2,0,0,17,169,Active,0,2024-02-02,99464,16,Restricted,112
+206925,Zone-F,Storage,1379,5904,57,17,11.7,2,0,0,11,570,Active,0,2024-04-25,58029,22,Restricted,138
+206937,Zone-G,Receiving,2739,3299,75,25,2.3,3,0,0,18,853,Active,0,2024-09-14,56645,9,Authorized Only,98
+207246,Zone-H,Staging,3438,6622,93,28,7.6,1,0,0,16,250,Active,0,2025-09-30,13651,8,Authorized Only,140
+208059,Zone-I,Returns,3324,3920,77,5,8.1,2,0,0,18,975,Active,0,2025-02-23,21040,11,Authorized Only,48
+208994,Zone-J,Cold Storage,1688,2922,59,24,3.2,1,1,0,2,123,Active,0,2025-04-13,63503,18,Restricted,279
+209263,Zone-K,Shipping,318,3475,81,14,2.6,3,1,1,9,119,Active,0,2025-09-19,85006,10,Authorized Only,292
+209294,Zone-L,Hazmat,1189,6091,84,16,3.6,2,0,0,16,874,Active,0,2025-05-19,39620,5,Restricted,81
+210770,Zone-M,Shipping,3028,7552,15,1,2.7,2,0,0,5,684,Active,0,2024-06-28,79953,29,Restricted,217
+210830,Zone-N,Shipping,4322,9851,88,7,10.0,2,0,1,12,276,Under Maintenance,1,2025-01-13,52544,6,Restricted,12
+211550,Zone-O,Cold Storage,896,8476,49,26,11.2,3,0,0,17,672,Active,0,2026-01-22,73697,19,Open,242
+212996,Zone-P,Hazmat,4928,7295,46,12,8.9,2,0,0,8,299,Active,0,2024-02-13,62564,28,Open,84
+214068,Zone-Q,Storage,3067,1853,2,12,9.3,3,0,1,4,874,Under Maintenance,0,2026-02-17,24573,15,Open,36
+215159,Zone-R,Storage,1175,2699,26,25,2.4,3,0,1,18,247,Active,0,2025-06-09,29234,14,Hazmat Cleared,29
+216408,Zone-S,Storage,369,169,34,26,4.1,2,1,0,8,894,Active,0,2026-02-27,88024,10,Restricted,224
+217119,Zone-T,Cold Storage,2582,6483,20,2,5.4,1,0,0,10,856,Active,0,2025-05-30,81260,3,Restricted,19
+217505,Zone-U,Shipping,4207,1323,92,21,3.0,1,0,0,11,146,Closed,0,2026-01-31,67131,19,Open,22
+219630,Zone-V,Receiving,3508,3123,90,27,10.7,3,0,1,8,894,Active,0,2026-04-08,60294,8,Hazmat Cleared,252
+220452,Zone-W,Storage,721,853,0,7,4.2,2,1,1,3,824,Active,0,2025-04-22,22703,19,Open,86
+221982,Zone-X,Receiving,126,4947,22,24,5.3,2,0,0,14,430,Active,1,2025-03-27,77648,0,Restricted,275
+222099,Zone-Y,Storage,4262,8647,1,28,2.1,3,1,0,9,343,Under Maintenance,0,2025-02-23,44262,1,Authorized Only,157
+225644,Zone-Z,Storage,3857,6096,43,26,10.5,3,0,0,7,445,Active,0,2025-12-15,24615,16,Open,12
+225896,Zone-A1,Cold Storage,191,4856,80,5,1.8,1,0,0,9,200,Inactive,0,2025-04-01,11322,18,Open,113
+227013,Zone-B1,Hazmat,2522,5234,56,15,8.1,1,0,0,1,472,Under Maintenance,1,2025-10-27,37979,3,Restricted,284
+227057,Zone-C1,Cold Storage,1894,8087,38,1,8.6,1,0,0,15,521,Under Maintenance,0,2026-04-26,32102,16,Authorized Only,283
+227751,Zone-D1,Cold Storage,1632,1529,80,28,6.4,2,0,0,17,934,Inactive,0,2024-02-27,70420,1,Restricted,7
+232480,Zone-E1,Staging,195,5012,65,23,3.8,2,1,0,4,270,Active,0,2024-02-25,92244,11,Restricted,191
+232907,Zone-F1,Storage,708,3121,28,24,3.7,3,0,0,17,628,Active,1,2025-04-27,71072,2,Hazmat Cleared,76
+235198,Zone-G1,Receiving,4837,9732,3,7,4.5,1,1,0,7,542,Active,0,2024-03-05,87493,0,Restricted,11
+235212,Zone-H1,Storage,1995,229,91,20,6.0,3,0,1,10,799,Under Maintenance,0,2025-02-23,52294,23,Open,257
+235321,Zone-I1,Receiving,2050,8841,73,16,10.6,1,0,0,6,525,Active,0,2024-05-01,93697,5,Authorized Only,273
+235659,Zone-J1,Returns,3070,157,25,24,2.7,2,0,0,9,617,Under Maintenance,1,2025-05-26,31451,26,Open,203
+237363,Zone-K1,Shipping,2117,3745,21,12,10.6,2,0,1,6,923,Under Maintenance,0,2024-11-27,13078,2,Open,53
+238978,Zone-L1,Cold Storage,870,7757,17,27,2.0,3,0,0,19,854,Under Maintenance,0,2025-08-06,30902,11,Open,46
+239090,Zone-M1,Shipping,2837,1382,81,15,3.8,1,1,0,3,684,Active,0,2024-03-22,13111,16,Restricted,262
+240291,Zone-N1,Storage,245,4108,37,3,8.5,3,1,0,17,254,Inactive,0,2024-07-03,32493,11,Restricted,149
+240601,Zone-O1,Hazmat,2795,3554,1,20,5.4,2,0,0,12,983,Active,0,2025-11-11,30542,15,Restricted,292
+241320,Zone-P1,Storage,1367,5297,67,19,10.8,3,0,0,13,903,Active,0,2024-07-20,73747,11,Restricted,189
+242742,Zone-Q1,Storage,1637,4216,25,6,10.3,1,0,0,16,540,Active,0,2024-05-28,43648,27,Restricted,228
+242832,Zone-R1,Returns,3484,2571,51,27,4.0,1,0,0,12,818,Active,0,2024-12-26,12461,11,Open,65
+244872,Zone-S1,Storage,676,9639,58,5,5.7,3,0,0,4,239,Active,0,2024-03-11,49413,29,Restricted,232
+245938,Zone-T1,Shipping,2108,9922,57,2,11.3,1,1,0,17,778,Active,0,2025-02-07,55166,19,Authorized Only,170
+246274,Zone-U1,Hazmat,2191,1871,87,28,8.6,2,0,0,19,216,Under Maintenance,0,2026-02-04,19787,16,Open,217
+247949,Zone-V1,Shipping,4198,3324,72,2,6.6,2,0,1,6,273,Inactive,1,2024-09-13,13067,7,Restricted,83
+249237,Zone-W1,Shipping,2137,1699,77,5,11.6,1,1,1,5,749,Active,0,2024-11-08,92143,20,Restricted,58
+249797,Zone-X1,Receiving,4937,6905,92,2,7.9,2,1,0,9,529,Active,0,2024-06-06,86116,2,Open,62
+251061,Zone-Y1,Shipping,2825,7701,13,11,11.3,2,0,0,6,514,Active,0,2026-03-17,10883,18,Restricted,269
+253267,Zone-Z1,Cold Storage,2723,2148,49,15,4.1,1,1,1,5,338,Active,0,2024-10-24,60049,25,Open,217
+254320,Zone-A2,Shipping,3588,656,60,11,4.8,3,0,0,7,187,Active,0,2025-01-18,57379,28,Open,222
+254699,Zone-B2,Storage,4602,5593,66,6,3.1,1,1,0,10,812,Active,0,2025-06-22,55000,0,Hazmat Cleared,268
+259083,Zone-C2,Charging,2552,8106,3,6,5.1,1,0,0,4,717,Active,0,2024-05-14,69412,5,Open,67
+259172,Zone-D2,Charging,2174,960,43,13,3.4,1,1,1,1,812,Active,0,2025-01-09,79734,26,Hazmat Cleared,203
+259755,Zone-E2,Receiving,3145,5998,80,17,11.1,1,0,0,11,385,Active,0,2026-03-22,87354,20,Authorized Only,65
+259789,Zone-F2,Storage,4708,9976,66,23,8.8,1,1,1,16,579,Active,0,2026-02-16,22299,21,Restricted,160
+260142,Zone-G2,Storage,1753,5019,92,29,5.4,1,1,0,9,823,Active,0,2025-07-19,24771,2,Restricted,8
+260774,Zone-H2,Storage,513,3274,33,26,11.5,1,0,0,8,418,Active,0,2024-10-21,93694,26,Restricted,35
+261101,Zone-I2,Returns,4058,3217,20,8,10.1,1,0,0,4,202,Active,0,2025-03-05,43296,4,Restricted,131
+261589,Zone-J2,Cold Storage,3225,6092,38,16,9.5,1,0,1,6,445,Active,0,2026-04-02,91645,5,Open,137
+262255,Zone-K2,Shipping,475,4801,89,2,4.9,1,1,1,4,833,Active,1,2024-08-30,92091,11,Open,166
+262423,Zone-L2,Storage,3794,3908,93,15,2.0,2,0,0,9,105,Active,1,2025-05-25,86549,4,Open,236
+263154,Zone-M2,Receiving,1878,541,13,13,11.8,3,0,0,5,217,Inactive,1,2025-05-23,49476,0,Open,11
+266017,Zone-N2,Staging,1543,7282,29,16,6.4,3,0,0,3,203,Active,0,2026-04-02,66878,3,Open,177
+266246,Zone-O2,Receiving,4058,3637,32,4,11.9,3,0,0,7,195,Active,0,2024-08-04,87316,13,Open,159
+267024,Zone-P2,Charging,3979,5056,79,13,6.4,3,0,0,2,167,Inactive,0,2025-02-22,56733,12,Authorized Only,155
+267120,Zone-Q2,Storage,1673,7231,7,6,9.7,2,0,0,6,718,Inactive,0,2026-01-10,87574,25,Open,294
+267633,Zone-R2,Staging,981,9578,30,25,7.3,3,0,1,8,541,Active,1,2024-11-09,36589,3,Restricted,77
+267955,Zone-S2,Storage,885,8753,92,17,3.9,3,1,0,4,687,Under Maintenance,0,2024-03-17,23768,15,Open,118
+268034,Zone-T2,Cold Storage,2282,8159,89,15,10.3,3,0,0,18,569,Active,0,2025-02-07,23450,14,Authorized Only,125
+268432,Zone-U2,Shipping,2256,5796,35,28,6.3,3,0,0,13,147,Inactive,0,2026-02-16,55889,21,Authorized Only,261
+270500,Zone-V2,Staging,178,8899,35,7,4.2,1,1,0,14,487,Active,0,2024-10-10,63901,16,Open,124
+270995,Zone-W2,Cold Storage,2854,547,61,9,11.7,3,0,0,3,693,Under Maintenance,0,2024-02-11,16552,12,Hazmat Cleared,107
+271969,Zone-X2,Storage,1760,982,99,7,9.9,1,1,0,17,151,Active,0,2025-11-03,68709,24,Restricted,285
+273796,Zone-Y2,Charging,2186,5334,47,15,2.5,1,1,0,6,939,Inactive,0,2024-01-09,46450,24,Authorized Only,67
+274158,Zone-Z2,Storage,951,9726,95,29,7.2,1,0,0,15,728,Active,0,2025-09-02,22019,24,Open,205
+274468,Zone-A3,Returns,1121,3757,80,27,10.6,3,0,0,10,266,Active,0,2025-12-08,77084,23,Restricted,0
+275130,Zone-B3,Receiving,4465,2892,81,14,8.0,2,0,1,10,169,Active,0,2025-10-06,82971,13,Open,219

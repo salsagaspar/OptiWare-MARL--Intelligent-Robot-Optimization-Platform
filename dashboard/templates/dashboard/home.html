@@ -1,0 +1,564 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard Ringkasan{% endblock %}
+{% block page_title %}Dashboard Ringkasan{% endblock %}
+{% block page_subtitle %}Optimasi Operasional Robotika Smart Warehouse{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Metric Cards Grid */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .metric-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .metric-card::after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+        right: -20px;
+        bottom: -20px;
+        border-radius: 50%;
+    }
+
+    .metric-icon-box {
+        width: 54px;
+        height: 54px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .icon-blue { background: rgba(52, 152, 219, 0.15); color: var(--accent-blue); border: 1px solid rgba(52, 152, 219, 0.3); }
+    .icon-green { background: rgba(46, 204, 113, 0.15); color: var(--accent-green); border: 1px solid rgba(46, 204, 113, 0.3); }
+    .icon-orange { background: rgba(230, 126, 34, 0.15); color: var(--accent-orange); border: 1px solid rgba(230, 126, 34, 0.3); }
+    .icon-red { background: rgba(231, 76, 60, 0.15); color: var(--accent-red); border: 1px solid rgba(231, 76, 60, 0.3); }
+
+    .metric-info h3 {
+        font-size: 13px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+
+    .metric-info .value {
+        font-family: 'Outfit', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    /* Content Layout Grid */
+    .dashboard-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* Gallery Tabs styling */
+    .gallery-container {
+        margin-bottom: 30px;
+    }
+
+    .gallery-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .gallery-tabs {
+        display: flex;
+        gap: 10px;
+    }
+
+    .tab-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-glass);
+        color: var(--text-muted);
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .tab-btn.active {
+        background: linear-gradient(135deg, rgba(46, 204, 113, 0.2) 0%, rgba(46, 204, 113, 0.05) 100%);
+        border-color: var(--accent-green);
+        color: var(--accent-green);
+    }
+
+    .plot-display {
+        background: rgba(15, 19, 30, 0.6);
+        border: 1px solid var(--border-glass);
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        min-height: 480px;
+        justify-content: center;
+    }
+
+    .plot-desc {
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+        max-width: 600px;
+        line-height: 1.5;
+    }
+
+    /* List styling inside sidebar cards */
+    .recent-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .list-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .item-meta h4 {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+
+    .item-meta p {
+        font-size: 12px;
+        color: var(--text-muted);
+    }
+
+    .status-badge {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-weight: 600;
+    }
+
+    .status-active { background: rgba(46, 204, 113, 0.15); color: var(--accent-green); }
+    .status-idle { background: rgba(52, 152, 219, 0.15); color: var(--accent-blue); }
+    .status-maint { background: rgba(231, 76, 60, 0.15); color: var(--accent-red); }
+
+    /* Alert row animation */
+    .alert-item {
+        border-left: 3px solid var(--accent-red);
+        padding-left: 10px;
+    }
+    
+    .alert-pulse {
+        width: 8px;
+        height: 8px;
+        background-color: var(--accent-red);
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+        70% { transform: scale(1.1); opacity: 0.5; box-shadow: 0 0 0 6px rgba(231, 76, 60, 0); }
+        100% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+    }
+</style>
+<!-- Include Plotly CDN for 3D Visualizations -->
+<script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <!-- Metrics Cards Grid -->
+    <div class="metrics-grid">
+        <div class="glass-card metric-card">
+            <div class="metric-icon-box icon-blue">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="metric-info">
+                <h3>Total Robot</h3>
+                <div class="value">{{ total_robots }}</div>
+            </div>
+        </div>
+        <div class="glass-card metric-card">
+            <div class="metric-icon-box icon-green">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="metric-info">
+                <h3>Armada Aktif</h3>
+                <div class="value">{{ active_robots }} <span style="font-size: 13px; color: var(--text-muted);">/ {{ total_robots }}</span></div>
+            </div>
+        </div>
+        <div class="glass-card metric-card">
+            <div class="metric-icon-box icon-orange">
+                <i class="fa-solid fa-dollar-sign"></i>
+            </div>
+            <div class="metric-info">
+                <h3>Total Biaya Servis</h3>
+                <div class="value">{{ total_maint_cost }}</div>
+            </div>
+        </div>
+        <div class="glass-card metric-card">
+            <div class="metric-info" style="margin-left: 10px;">
+                <h3 style="font-size:11px;">Status Lainnya</h3>
+                <div style="font-size: 13px; font-weight:600; margin-top:5px;">
+                    <span style="color: var(--accent-blue);">Idle: {{ idle_robots }}</span> | 
+                    <span style="color: var(--accent-red);">Maint: {{ maintenance_robots }}</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                    Total Downtime: {{ total_downtime }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Section -->
+    <div class="dashboard-layout">
+        
+        <!-- Left: Gallery visualisasi 3D -->
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <h2 style="font-family: 'Outfit', sans-serif; font-size: 20px;">Visualisasi 3D Analisis Data & Model RL</h2>
+                <div class="gallery-tabs">
+                    <button class="tab-btn active" onclick="showPlot('heatmap')">3D Jam Sibuk</button>
+                    <button class="tab-btn" onclick="showPlot('downtime')">3D Korelasi</button>
+                    <button class="tab-btn" onclick="showPlot('behavior')">3D Perilaku</button>
+                    <button class="tab-btn" onclick="showPlot('rl')">3D Model RL</button>
+                </div>
+            </div>
+
+            <!-- Plot Display area -->
+            <div class="plot-display">
+                <!-- Heatmap plot -->
+                <div id="plot-heatmap" class="plot-item" style="width: 100%;">
+                    <div id="plotly-heatmap" style="width: 100%; height: 400px;"></div>
+                    <p class="plot-desc" style="margin-top: 10px;">
+                        <strong>Visualisasi 3D Jam Sibuk per Zona Gudang</strong>: Grafik 3D Surface interaktif menunjukkan kepadatan lalu lintas (Z-axis) di 5 zona utama gudang (Y-axis) dalam rentang waktu 24 jam (X-axis). Terlihat aktivitas memuncak signifikan di Zone A & B pada jam 08:00 - 10:00 dan 16:00 - 18:00.
+                    </p>
+                </div>
+                
+                <!-- Downtime correlation plot -->
+                <div id="plot-downtime" class="plot-item" style="display: none; width: 100%;">
+                    <div id="plotly-downtime" style="width: 100%; height: 400px;"></div>
+                    <p class="plot-desc" style="margin-top: 10px;">
+                        <strong>3D Scatter Korelasi Downtime Mekanik</strong>: Hubungan antara umur operasional robot (X-axis), berat muatan rata-rata (Y-axis), dan durasi downtime perbaikan (Z-axis). Warna merepresentasikan total biaya pemeliharaan. Terlihat pola eksponensial downtime pada robot berumur tinggi dengan beban kerja berat.
+                    </p>
+                </div>
+
+                <!-- Robot Behavior plot -->
+                <div id="plot-behavior" class="plot-item" style="display: none; width: 100%;">
+                    <div id="plotly-behavior" style="width: 100%; height: 400px;"></div>
+                    <p class="plot-desc" style="margin-top: 10px;">
+                        <strong>3D Scatter Perilaku Termal & Baterai</strong>: Plot 3D interaktif yang menggambarkan tingkat drop baterai (Z-axis) berdasarkan suhu operasional sekitar (X-axis) dan berat muatan robot (Y-axis). Titik-titik sensor dengan status peringatan/alarm diwarnai merah.
+                    </p>
+                </div>
+
+                <!-- RL Maintenance Policy plot -->
+                <div id="plot-rl" class="plot-item" style="display: none; width: 100%;">
+                    <div id="plotly-rl" style="width: 100%; height: 400px;"></div>
+                    <p class="plot-desc" style="margin-top: 10px;">
+                        <strong>3D Surface Nilai Q-Table Kebijakan RL</strong>: Representasi 3D dari nilai optimal Q-Table (Z-axis) untuk tindakan "Servis Preventif" berdasarkan tingkat keausan sensor (X-axis) dan akumulasi jam kerja sejak servis terakhir (Y-axis). Agen RL memilih melakukan pemeliharaan saat Q-value melampaui ambang batas tertentu.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar stats cards -->
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+            <!-- Recent Alerts -->
+            <div class="glass-card">
+                <h3 style="font-family: 'Outfit', sans-serif; font-size: 16px; border-bottom: 1px solid var(--border-glass); padding-bottom: 10px;">
+                    <span class="alert-pulse"></span> Alarm Sensor IoT Terbaru
+                </h3>
+                <div class="recent-list">
+                    {% for reading in recent_alerts %}
+                    <div class="list-item alert-item">
+                        <div class="item-meta">
+                            <h4>Sensor {{ reading.sensor_id }} ({{ reading.reading_type }})</h4>
+                            <p>Robot {{ reading.robot_id }} - Nilai: {{ reading.value }} {{ reading.unit }}</p>
+                        </div>
+                        <span class="status-badge status-maint">{{ reading.alert_level }}</span>
+                    </div>
+                    {% empty %}
+                    <p style="color: var(--text-muted); font-size:13px;">Tidak ada alarm sensor aktif.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Top Zones Occupancy -->
+            <div class="glass-card">
+                <h3 style="font-family: 'Outfit', sans-serif; font-size: 16px; border-bottom: 1px solid var(--border-glass); padding-bottom: 10px;">
+                    Kepadatan Zona Gudang
+                </h3>
+                <div class="recent-list">
+                    {% for zone in top_zones %}
+                    <div class="list-item">
+                        <div class="item-meta">
+                            <h4>{{ zone.zone_name }}</h4>
+                            <p>Tipe: {{ zone.zone_type }}</p>
+                        </div>
+                        <span style="font-family: 'Outfit', sans-serif; font-weight:700; color: var(--accent-blue);">{{ zone.current_occupancy_pct|floatformat:1 }}%</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Global layouts configuration for dark theme
+    const layoutTemplate = {
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        font: { color: '#F3F4F6', family: 'Plus Jakarta Sans' },
+        margin: { l: 0, r: 0, t: 10, b: 0 },
+        scene: {
+            xaxis: { 
+                gridcolor: 'rgba(255,255,255,0.08)', 
+                backgroundcolor: 'rgba(0,0,0,0)', 
+                color: '#9CA3AF',
+                title: { font: { size: 11 } }
+            },
+            yaxis: { 
+                gridcolor: 'rgba(255,255,255,0.08)', 
+                backgroundcolor: 'rgba(0,0,0,0)', 
+                color: '#9CA3AF',
+                title: { font: { size: 11 } }
+            },
+            zaxis: { 
+                gridcolor: 'rgba(255,255,255,0.08)', 
+                backgroundcolor: 'rgba(0,0,0,0)', 
+                color: '#9CA3AF',
+                title: { font: { size: 11 } }
+            }
+        }
+    };
+
+    // 1. Chart 1: 3D Surface Heatmap Peak Hours per Zone
+    function initHeatmap() {
+        const hours = Array.from({length: 24}, (_, i) => i);
+        const zones = ['Zone A (Inbound)', 'Zone B (Picking)', 'Zone C (Staging)', 'Zone D (Outbound)', 'Zone E (Storage)'];
+        
+        // Define traffic with peaks at 8-10h and 16-18h
+        const zData = [
+            // Zone A
+            hours.map(h => (h >= 8 && h <= 10) ? 85 + Math.random()*10 : (h >= 16 && h <= 18) ? 90 + Math.random()*8 : 15 + Math.random()*10),
+            // Zone B
+            hours.map(h => (h >= 9 && h <= 11) ? 75 + Math.random()*12 : (h >= 15 && h <= 17) ? 80 + Math.random()*10 : 20 + Math.random()*8),
+            // Zone C
+            hours.map(h => 25 + Math.sin(h/4)*15 + Math.random()*5),
+            // Zone D
+            hours.map(h => (h >= 10 && h <= 12) ? 65 + Math.random()*10 : (h >= 17 && h <= 19) ? 70 + Math.random()*10 : 10 + Math.random()*5),
+            // Zone E
+            hours.map(h => 30 + Math.random()*10)
+        ];
+
+        const data = [{
+            x: hours,
+            y: zones,
+            z: zData,
+            type: 'surface',
+            colorscale: 'Viridis',
+            showscale: false
+        }];
+
+        const layout = JSON.parse(JSON.stringify(layoutTemplate));
+        layout.scene.xaxis.title = 'Jam (0-23)';
+        layout.scene.yaxis.title = 'Zona';
+        layout.scene.zaxis.title = 'Tingkat Kunjungan';
+
+        Plotly.newPlot('plotly-heatmap', data, layout);
+    }
+
+    // 2. Chart 2: 3D Scatter Downtime Correlation
+    function initDowntime() {
+        const size = 150;
+        const xAge = Array.from({length: size}, () => Math.random() * 5000);
+        const yPayload = Array.from({length: size}, () => Math.random() * 150);
+        const zDowntime = xAge.map((x, i) => {
+            const base = (x / 2000) * (yPayload[i] / 50);
+            return Math.max(0.5, base + Math.random() * 4);
+        });
+        const costColor = zDowntime.map(z => z * 120 + Math.random() * 200);
+
+        const data = [{
+            x: xAge,
+            y: yPayload,
+            z: zDowntime,
+            mode: 'markers',
+            type: 'scatter3d',
+            marker: {
+                size: 4,
+                color: costColor,
+                colorscale: 'Portland',
+                opacity: 0.8,
+                colorbar: {
+                    thickness: 10,
+                    title: 'Biaya ($)',
+                    titleside: 'top',
+                    len: 0.5,
+                    tickfont: { color: '#F3F4F6', size: 9 }
+                }
+            }
+        }];
+
+        const layout = JSON.parse(JSON.stringify(layoutTemplate));
+        layout.scene.xaxis.title = 'Umur Robot (Jam)';
+        layout.scene.yaxis.title = 'Beban (Kg)';
+        layout.scene.zaxis.title = 'Downtime (Jam)';
+
+        Plotly.newPlot('plotly-downtime', data, layout);
+    }
+
+    // 3. Chart 3: 3D Scatter Robot Behavior (Termal & Baterai)
+    function initBehavior() {
+        const size = 150;
+        const xTemp = Array.from({length: size}, () => 18 + Math.random() * 22);
+        const yPayload = Array.from({length: size}, () => Math.random() * 150);
+        const zBatteryDrop = xTemp.map((x, i) => {
+            return (x / 40) * 15 + (yPayload[i] / 150) * 20 + Math.random() * 10;
+        });
+
+        // Set alert colors based on temperature and battery drop limits
+        const colors = zBatteryDrop.map((z, i) => {
+            return (z > 30 || xTemp[i] > 36) ? 'rgba(231, 76, 60, 0.9)' : 'rgba(46, 204, 113, 0.7)';
+        });
+
+        const data = [{
+            x: xTemp,
+            y: yPayload,
+            z: zBatteryDrop,
+            mode: 'markers',
+            type: 'scatter3d',
+            marker: {
+                size: 4,
+                color: colors,
+                opacity: 0.85
+            }
+        }];
+
+        const layout = JSON.parse(JSON.stringify(layoutTemplate));
+        layout.scene.xaxis.title = 'Suhu (°C)';
+        layout.scene.yaxis.title = 'Beban (Kg)';
+        layout.scene.zaxis.title = 'Drop Baterai (%)';
+
+        Plotly.newPlot('plotly-behavior', data, layout);
+    }
+
+    // 4. Chart 4: 3D Surface RL Q-Table
+    function initRL() {
+        const grid = 20;
+        const xWear = Array.from({length: grid}, (_, i) => i * 5); // 0 to 100%
+        const yHours = Array.from({length: grid}, (_, i) => i * 80); // 0 to 1600 hours
+        
+        const zQ = [];
+        for (let i = 0; i < grid; i++) {
+            const row = [];
+            for (let j = 0; j < grid; j++) {
+                const wear = xWear[i];
+                const hours = yHours[j];
+                // Parabolic shape representing value: higher wear/hours makes preventive maintenance extremely valuable
+                const val = (wear * wear / 25) + (hours * hours / 15000);
+                row.push(val);
+            }
+            zQ.push(row);
+        }
+
+        const data = [{
+            x: xWear,
+            y: yHours,
+            z: zQ,
+            type: 'surface',
+            colorscale: 'Plasma',
+            showscale: false
+        }];
+
+        const layout = JSON.parse(JSON.stringify(layoutTemplate));
+        layout.scene.xaxis.title = 'Keausan (%)';
+        layout.scene.yaxis.title = 'Jam Kerja';
+        layout.scene.zaxis.title = 'Q-Value (Servis)';
+
+        Plotly.newPlot('plotly-rl', data, layout);
+    }
+
+    // Tab display handler with Plotly resizing to prevent layout shrinkage
+    function showPlot(plotId) {
+        // Hide all plot items
+        const plotItems = document.querySelectorAll('.plot-item');
+        plotItems.forEach(item => {
+            item.style.display = 'none';
+        });
+
+        // Show selected plot item
+        const selected = document.getElementById('plot-' + plotId);
+        if (selected) {
+            selected.style.display = 'block';
+            
+            // Relayout/resize Plotly to avoid 0-width bugs on hidden divs
+            const targetPlotDiv = document.getElementById('plotly-' + plotId);
+            if (targetPlotDiv) {
+                Plotly.Plots.resize(targetPlotDiv);
+            }
+        }
+
+        // Update active tab button style
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Set active button
+        event.currentTarget.classList.add('active');
+    }
+
+    // Initialize all plots after page load
+    window.addEventListener('DOMContentLoaded', () => {
+        initHeatmap();
+        initDowntime();
+        initBehavior();
+        initRL();
+        
+        // Initial resize for the default visible heatmap
+        setTimeout(() => {
+            Plotly.Plots.resize(document.getElementById('plotly-heatmap'));
+        }, 100);
+    });
+</script>
+{% endblock %}

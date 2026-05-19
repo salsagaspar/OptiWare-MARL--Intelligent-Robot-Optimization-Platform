@@ -1,0 +1,185 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Armada Robot{% endblock %}
+{% block page_title %}Armada Robot{% endblock %}
+{% block page_subtitle %}Manajemen dan Pemantauan Seluruh Robot Operasional Gudang{% endblock %}
+
+{% block extra_css %}
+<style>
+    .filter-bar {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .search-input {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-glass);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 25px;
+        outline: none;
+        flex-grow: 1;
+        max-width: 400px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+        border-color: var(--accent-blue);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .select-filter {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-glass);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 25px;
+        outline: none;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        background: linear-gradient(135deg, var(--accent-blue) 0%, rgba(52, 152, 219, 0.7) 100%);
+        border: none;
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    /* Table Glassmorphism */
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border-glass);
+        background: rgba(15, 19, 30, 0.4);
+        backdrop-filter: blur(var(--blur-radius));
+    }
+
+    .glass-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .glass-table th, .glass-table td {
+        padding: 16px 24px;
+    }
+
+    .glass-table th {
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text-muted);
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        border-bottom: 1px solid var(--border-glass);
+    }
+
+    .glass-table td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        font-size: 14px;
+    }
+
+    .glass-table tbody tr {
+        transition: background 0.3s ease;
+    }
+
+    .glass-table tbody tr:hover {
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .glass-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .status-pill {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .pill-active { background: rgba(46, 204, 113, 0.15); color: var(--accent-green); }
+    .pill-idle { background: rgba(52, 152, 219, 0.15); color: var(--accent-blue); }
+    .pill-maint { background: rgba(231, 76, 60, 0.15); color: var(--accent-red); }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <!-- Filter and Search section -->
+    <div class="glass-card" style="margin-bottom: 30px; padding: 20px;">
+        <form method="GET" action="{% url 'dashboard:robot_list' %}" class="filter-bar">
+            <input type="text" name="q" value="{{ query }}" placeholder="Cari ID Robot, Model, atau Serial..." class="search-input">
+            
+            <select name="status" class="select-filter">
+                <option value="">Semua Status</option>
+                <option value="Active" {% if status_filter == 'Active' %}selected{% endif %}>Active</option>
+                <option value="Idle" {% if status_filter == 'Idle' %}selected{% endif %}>Idle</option>
+                <option value="Maintenance" {% if status_filter == 'Maintenance' %}selected{% endif %}>Maintenance</option>
+            </select>
+            
+            <button type="submit" class="submit-btn"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+            <a href="{% url 'dashboard:robot_list' %}" style="color: var(--text-muted); font-size:14px; text-decoration:none; margin-left:10px;">Reset</a>
+        </form>
+    </div>
+
+    <!-- Robots Table -->
+    <div class="table-container">
+        <table class="glass-table">
+            <thead>
+                <tr>
+                    <th>Robot ID</th>
+                    <th>Model</th>
+                    <th>Pabrikan</th>
+                    <th>Status</th>
+                    <th>Jam Operasional</th>
+                    <th>Kecepatan Maks (m/s)</th>
+                    <th>Beban Maks (kg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for robot in robots %}
+                <tr>
+                    <td style="font-weight: 700; font-family: 'Outfit', sans-serif;">{{ robot.robot_id }}</td>
+                    <td>{{ robot.model }}</td>
+                    <td>{{ robot.manufacturer }}</td>
+                    <td>
+                        {% if robot.operational_status == 'Active' %}
+                            <span class="status-pill pill-active">Active</span>
+                        {% elif robot.operational_status == 'Idle' %}
+                            <span class="status-pill pill-idle">Idle</span>
+                        {% else %}
+                            <span class="status-pill pill-maint">Maintenance</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ robot.total_operational_hours|floatformat:1 }} jam</td>
+                    <td>{{ robot.max_speed_mps }} m/s</td>
+                    <td>{{ robot.max_payload_kg }} kg</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 40px;">Tidak ada robot yang cocok dengan pencarian Anda.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

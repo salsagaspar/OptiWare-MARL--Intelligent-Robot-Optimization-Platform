@@ -1,0 +1,201 @@
+technician_id,employee_id,first_name,last_name,hire_date,certification_level,specialization,department,hourly_rate_usd,shift,years_experience,certification_expiry,team_id,manager_id,performance_score,active_status,training_count,overtime_hours_ytd,robots_serviced_ytd,avg_repair_time_hrs
+106600,506039,James,Johnson,2022-01-07,Level-1,Hydraulics,In-House Maintenance,67.17,Night,29,2023-04-17,138,93513,4.0,1,8,24.9,20,4.72
+106987,707735,Sara,Garcia,2020-02-19,Level-1,Mechanical,In-House Maintenance,51.26,Rotating,21,2021-04-07,129,49208,2.8,0,21,0.7,55,5.2
+108960,372715,Carlos,Patel,2013-02-01,Master Tech,General,Field Service,57.1,Evening,20,2013-08-13,113,39690,3.3,0,9,40.1,30,0.93
+114356,586228,John,Garcia,2016-09-16,Level-2,Electrical,Vendor Support,40.12,Rotating,12,2018-01-26,117,28882,2.3,1,1,21.6,6,4.11
+122156,309968,Fatima,Smith,2015-03-10,Level-2,Electrical,Remote Ops,60.28,Evening,1,2017-02-15,119,59331,3.6,1,18,3.2,44,5.59
+129730,457749,James,Rossi,2017-06-30,Master Tech,Software,In-House Maintenance,91.31,Day,5,2019-05-04,123,84830,3.1,1,26,0.4,40,1.31
+133210,944147,Priya,Patel,2024-09-01,Level-2,Electrical,Remote Ops,86.44,Night,28,2026-08-31,148,84858,2.7,0,29,8.0,1,7.33
+133580,364378,Wei,Patel,2016-10-28,Level-1,Electrical,In-House Maintenance,74.17,Evening,13,2018-06-15,122,58773,3.8,1,12,45.4,26,3.66
+137508,112651,Sara,Okafor,2019-11-08,Level-1,Sensors,In-House Maintenance,27.24,Night,10,2021-01-14,111,76096,4.1,1,24,83.8,40,4.62
+143783,455536,John,Kim,2010-03-19,Level-2,Electrical,Field Service,57.02,Day,14,2011-02-27,137,97907,3.8,1,37,10.6,48,3.85
+144208,258521,Fatima,Rossi,2021-05-16,Level-2,Hydraulics,Remote Ops,69.82,Night,25,2022-09-03,111,84161,2.9,0,12,16.9,32,10.1
+155225,123299,Priya,Patel,2013-05-18,Level-2,Hydraulics,Field Service,58.03,Day,12,2014-09-05,125,70862,3.5,1,16,53.1,17,7.03
+157594,789770,Priya,Müller,2015-01-27,Master Tech,General,Remote Ops,67.88,Evening,19,2016-04-17,121,77664,2.2,1,28,20.9,2,7.65
+157889,948978,Wei,Kim,2014-12-22,Level-2,Mechanical,Remote Ops,25.25,Day,27,2016-11-25,132,78182,3.9,1,18,1.3,3,7.98
+158055,165332,John,Kim,2024-01-07,Level-3,Electrical,In-House Maintenance,23.75,Day,28,2024-12-25,105,88361,2.1,0,27,11.1,17,10.04
+158740,202349,James,Smith,2012-09-20,Level-1,Sensors,Field Service,68.0,Day,14,2013-06-17,118,26505,3.2,1,3,6.4,32,1.52
+161688,617009,Aisha,Garcia,2014-04-25,Level-2,Software,In-House Maintenance,31.57,Night,19,2015-10-08,117,35664,3.2,1,32,15.0,72,6.28
+168127,489284,Luca,Patel,2022-11-01,Level-3,Hydraulics,In-House Maintenance,49.37,Evening,1,2024-01-10,138,29002,3.4,1,6,4.7,70,1.94
+169288,634922,Luca,Chen,2021-01-06,Level-2,Electrical,In-House Maintenance,87.88,Rotating,24,2022-01-30,128,99319,4.8,1,17,96.5,50,5.69
+171298,138574,Aisha,Rossi,2024-09-04,Level-2,Electrical,Field Service,60.64,Night,10,2025-12-31,105,18685,2.3,1,31,2.2,73,1.83
+171988,594750,James,Chen,2010-01-15,Level-3,Software,In-House Maintenance,50.12,Evening,27,2010-09-21,147,52476,2.5,1,25,4.6,38,7.73
+172376,800548,Fatima,Chen,2022-04-26,Level-3,Electrical,Vendor Support,41.72,Rotating,18,2023-07-12,123,59415,4.2,1,20,23.4,61,3.13
+173213,509594,Maria,Kim,2022-03-13,Level-3,General,In-House Maintenance,79.48,Rotating,6,2023-05-21,136,84973,3.7,1,39,17.7,63,1.0
+181367,346229,James,Müller,2012-04-23,Level-1,Sensors,Field Service,78.07,Day,28,2014-03-17,149,49617,4.8,1,1,45.1,77,4.06
+184596,550710,Aisha,Okafor,2019-06-27,Level-3,Electrical,Vendor Support,25.16,Day,8,2020-06-05,115,38392,3.8,1,12,13.4,33,5.93
+185729,767203,Wei,Johnson,2015-04-30,Level-1,Mechanical,In-House Maintenance,40.33,Night,18,2016-09-19,126,28116,4.9,1,20,1.3,20,11.54
+195735,399027,Fatima,Chen,2010-07-14,Level-1,General,Field Service,83.37,Evening,6,2011-05-17,117,59250,3.4,1,12,8.3,17,4.44
+200599,408139,John,Smith,2010-09-09,Level-3,Software,In-House Maintenance,63.85,Day,24,2011-12-17,112,64409,2.7,0,10,1.1,78,11.43
+203612,565579,James,Smith,2014-07-01,Level-2,Software,Field Service,36.23,Evening,6,2016-02-02,145,17773,4.2,1,29,37.0,57,2.61
+209270,441507,Wei,Chen,2017-11-12,Level-1,Hydraulics,Field Service,92.81,Evening,22,2019-11-06,138,79019,2.7,1,30,30.7,59,9.65
+215148,332105,Luca,Johnson,2016-09-18,Level-1,Electrical,Field Service,47.14,Evening,22,2017-10-26,140,63636,3.5,0,38,8.0,36,2.4
+218353,799349,James,Rossi,2023-07-19,Level-2,General,Remote Ops,47.43,Day,18,2024-10-26,138,58376,4.6,1,35,25.1,70,4.6
+218384,304145,Priya,Kim,2010-09-09,Level-3,Mechanical,In-House Maintenance,24.23,Evening,25,2011-10-20,100,61615,4.7,1,15,4.3,12,8.89
+226308,167651,Sara,Smith,2013-10-29,Level-2,Electrical,Vendor Support,82.93,Evening,5,2014-10-18,137,86931,4.0,0,21,20.3,51,7.58
+235517,781317,Sara,Rossi,2013-01-13,Master Tech,Electrical,In-House Maintenance,51.17,Day,20,2014-12-23,144,35226,5.0,0,35,18.9,7,11.29
+235866,585244,James,Kim,2012-01-18,Level-2,Mechanical,In-House Maintenance,42.12,Day,22,2012-09-26,138,60074,3.8,0,25,0.8,28,5.16
+243105,937750,Carlos,Santos,2022-02-15,Level-2,Software,Vendor Support,40.03,Day,16,2024-02-11,101,22952,4.4,1,11,3.8,65,5.48
+245044,608315,Priya,Garcia,2014-07-27,Master Tech,Hydraulics,In-House Maintenance,49.84,Night,3,2016-06-22,137,51085,4.7,1,39,11.4,11,2.98
+246595,217924,John,Garcia,2023-03-02,Level-2,Software,In-House Maintenance,73.55,Day,1,2023-09-22,104,90073,2.5,1,14,9.3,45,2.26
+255805,782465,Sara,Okafor,2014-04-29,Level-1,Mechanical,Field Service,31.68,Evening,12,2015-01-06,107,55110,2.1,1,30,2.6,56,8.61
+257309,689343,Luca,Garcia,2015-12-03,Master Tech,Software,Field Service,91.72,Night,28,2017-04-11,115,46929,4.2,0,39,11.3,63,10.2
+258601,765825,Carlos,Kim,2024-09-26,Level-1,Mechanical,Field Service,73.97,Evening,9,2025-07-07,146,29508,4.8,0,6,7.5,63,7.66
+271436,134380,Sara,Kim,2022-11-30,Level-3,Mechanical,Field Service,60.79,Day,26,2023-06-08,130,24309,2.7,1,13,38.2,15,1.98
+274841,897454,Luca,Patel,2012-09-18,Level-1,Electrical,Field Service,31.5,Day,23,2014-03-24,139,26448,2.1,1,36,49.7,77,3.36
+279420,358566,Maria,Chen,2012-11-02,Level-2,Electrical,Vendor Support,35.82,Night,11,2014-09-30,119,56811,2.8,1,28,3.6,44,3.75
+279591,631406,Luca,Müller,2012-03-08,Master Tech,Electrical,Field Service,30.83,Day,15,2013-05-27,138,68204,3.7,1,20,1.0,13,8.4
+286676,901503,Aisha,Müller,2018-08-15,Level-1,Mechanical,Field Service,54.57,Evening,11,2020-01-21,101,55186,3.4,1,19,19.1,0,10.08
+286828,159188,John,Rossi,2018-02-09,Level-1,Hydraulics,In-House Maintenance,63.32,Day,29,2019-08-17,113,43684,2.8,1,10,2.6,14,9.09
+293378,455173,John,Müller,2022-12-23,Level-3,Sensors,Field Service,43.76,Rotating,21,2024-08-03,105,58730,3.9,1,9,13.3,56,7.09
+298146,732184,Maria,Santos,2021-10-02,Level-3,Hydraulics,Remote Ops,50.95,Evening,19,2022-11-25,136,51186,3.0,1,12,34.3,31,6.05
+298605,378734,Maria,Santos,2023-11-04,Master Tech,Software,Field Service,58.63,Evening,21,2025-05-22,128,78499,5.0,1,1,1.3,44,8.84
+305939,299698,Sara,Johnson,2015-10-23,Level-3,Mechanical,Vendor Support,68.06,Day,12,2017-06-30,120,36499,2.9,1,39,1.8,50,4.24
+306230,631409,Carlos,Okafor,2022-05-07,Level-2,Software,Field Service,33.47,Evening,20,2023-10-24,125,98695,3.9,0,26,31.1,67,6.82
+311097,987503,Carlos,Rossi,2013-08-09,Level-1,Mechanical,In-House Maintenance,91.15,Rotating,28,2014-09-04,130,83250,2.0,1,19,32.9,16,11.77
+311253,164761,Aisha,Johnson,2012-12-04,Master Tech,Mechanical,Remote Ops,43.44,Day,26,2014-02-11,102,57199,5.0,1,38,45.0,53,2.6
+314663,135280,Sara,Santos,2012-05-03,Master Tech,Software,Field Service,36.84,Day,10,2013-05-05,135,61499,4.3,1,13,65.9,26,8.07
+315592,448051,John,Rossi,2019-11-07,Level-1,Software,Remote Ops,82.56,Day,3,2020-06-07,102,59056,4.8,1,1,0.8,75,3.03
+317021,592637,Fatima,Chen,2023-03-07,Level-3,General,In-House Maintenance,63.97,Day,3,2024-11-09,117,66603,3.3,1,1,23.9,58,0.8
+319559,728875,Luca,Kim,2023-01-16,Level-2,Hydraulics,In-House Maintenance,58.2,Night,17,2024-02-23,147,77296,3.3,1,30,3.8,10,9.57
+319880,745733,Sara,Kim,2014-04-24,Level-1,Hydraulics,In-House Maintenance,76.54,Day,10,2015-03-04,109,49024,2.1,1,18,1.5,12,0.72
+321352,946167,Fatima,Okafor,2018-07-31,Level-3,Sensors,In-House Maintenance,54.3,Day,27,2019-11-06,115,93711,5.0,1,8,3.8,22,2.73
+321882,837040,Sara,Müller,2014-03-10,Level-3,General,Field Service,40.56,Night,28,2015-02-14,107,75129,4.7,1,12,23.2,43,8.28
+322128,723923,Priya,Santos,2016-06-04,Level-3,Sensors,In-House Maintenance,23.18,Evening,20,2017-09-12,101,98737,3.5,1,34,20.0,26,8.64
+323226,712865,Aisha,Patel,2017-08-16,Level-2,Software,In-House Maintenance,32.39,Evening,28,2018-02-22,107,33633,2.0,1,7,9.0,14,10.65
+325948,308909,John,Garcia,2015-08-04,Level-1,Sensors,Field Service,40.83,Day,2,2016-04-22,149,77979,4.8,1,19,7.5,53,4.28
+327808,797147,Fatima,Smith,2011-03-26,Master Tech,General,Vendor Support,61.36,Night,7,2012-04-10,100,79531,4.0,1,8,26.3,67,11.41
+330692,918256,Wei,Patel,2014-06-05,Level-2,Electrical,In-House Maintenance,85.34,Evening,7,2015-06-22,140,90718,4.7,1,14,2.8,52,6.16
+332488,809867,Aisha,Garcia,2020-08-18,Master Tech,Hydraulics,Field Service,25.65,Evening,17,2022-02-21,114,28440,2.8,0,13,13.0,6,2.23
+333364,869403,Sara,Okafor,2012-11-05,Level-3,Sensors,In-House Maintenance,45.19,Evening,28,2014-05-28,109,47404,4.8,0,6,35.8,65,0.76
+348803,963314,Sara,Santos,2010-02-18,Level-1,Electrical,Field Service,81.39,Night,29,2011-03-03,135,99476,2.1,1,1,25.8,36,3.29
+350969,731380,Carlos,Smith,2018-09-14,Level-1,General,In-House Maintenance,41.08,Night,14,2019-10-18,101,54851,4.6,1,14,19.2,55,6.89
+353186,613530,Wei,Johnson,2022-09-23,Level-3,Mechanical,In-House Maintenance,90.91,Day,8,2023-10-15,117,57042,2.9,1,12,6.0,27,10.77
+359828,544801,Wei,Smith,2019-04-10,Level-2,Hydraulics,Field Service,33.24,Evening,24,2020-03-28,105,46133,2.9,1,35,0.7,31,6.27
+364522,697094,Aisha,Garcia,2022-04-02,Level-1,Software,Field Service,45.53,Rotating,26,2023-01-16,100,57274,3.5,1,34,23.6,35,8.93
+369336,337551,Aisha,Rossi,2020-11-16,Level-1,Electrical,In-House Maintenance,52.58,Day,12,2022-03-18,106,94558,4.5,0,16,16.0,7,4.17
+370037,673342,Priya,Okafor,2010-04-21,Level-3,Mechanical,In-House Maintenance,61.46,Day,27,2011-08-30,100,31633,2.5,1,11,105.4,57,9.48
+374846,732158,Maria,Okafor,2014-10-13,Level-3,Software,In-House Maintenance,45.57,Night,23,2015-06-01,132,99724,2.5,1,7,4.1,39,10.25
+379148,944616,Wei,Rossi,2016-07-02,Level-2,Hydraulics,In-House Maintenance,27.08,Day,7,2017-07-08,108,32393,3.7,1,24,16.4,26,3.75
+380480,622849,Wei,Johnson,2018-06-16,Level-3,Sensors,In-House Maintenance,45.23,Day,18,2019-02-19,105,93610,3.3,0,38,21.9,14,4.1
+386561,377313,Priya,Müller,2020-11-14,Level-1,Electrical,Field Service,63.35,Evening,8,2021-09-13,134,16329,3.2,1,34,22.7,11,3.79
+391705,605360,James,Smith,2021-08-26,Level-3,Hydraulics,Field Service,88.04,Day,6,2022-06-28,103,13542,2.3,0,8,51.6,15,0.66
+392020,512431,James,Chen,2010-03-24,Level-2,Mechanical,Vendor Support,83.01,Day,3,2010-12-30,137,10497,2.8,0,38,1.8,67,10.25
+395686,218112,John,Okafor,2015-05-08,Level-3,Mechanical,Vendor Support,78.92,Rotating,21,2017-01-02,102,24585,3.1,1,26,13.9,79,10.41
+398390,441810,John,Kim,2018-01-21,Level-1,General,In-House Maintenance,93.4,Day,8,2019-07-11,130,80393,3.3,1,25,12.0,28,2.31
+399746,903913,John,Garcia,2018-09-14,Level-1,Software,Vendor Support,31.7,Day,25,2020-07-23,110,96713,3.8,1,16,6.8,71,6.29
+402306,185453,Luca,Smith,2021-05-30,Level-3,Software,Field Service,75.25,Day,12,2022-06-18,138,34172,2.5,1,28,0.6,62,7.73
+403740,965874,James,Patel,2016-08-08,Level-2,Electrical,Field Service,58.0,Day,9,2017-07-25,126,74123,4.5,1,7,12.6,5,9.64
+423002,473362,Maria,Patel,2019-05-28,Level-3,Mechanical,Field Service,90.07,Day,17,2020-03-14,110,96814,2.3,1,20,5.9,40,6.0
+424049,532154,John,Chen,2019-04-14,Level-1,Electrical,In-House Maintenance,90.77,Evening,21,2020-05-09,136,21942,3.0,1,11,6.6,63,10.82
+427105,368593,Priya,Garcia,2024-12-20,Level-1,Mechanical,In-House Maintenance,57.84,Evening,10,2025-11-05,118,68397,3.3,1,33,6.2,75,5.72
+428172,573740,Fatima,Smith,2018-03-04,Level-1,Electrical,In-House Maintenance,85.06,Rotating,19,2018-12-01,101,65689,2.4,1,23,33.5,55,1.99
+446589,907404,Fatima,Johnson,2024-09-04,Level-3,Sensors,In-House Maintenance,61.18,Evening,19,2026-05-29,112,60537,4.0,1,26,13.8,73,11.73
+449343,908492,Fatima,Johnson,2022-04-03,Level-1,Sensors,In-House Maintenance,82.77,Night,14,2022-09-30,142,91887,2.4,1,34,11.9,14,4.79
+454008,858706,Maria,Smith,2017-12-25,Level-1,Mechanical,Field Service,93.41,Evening,28,2018-12-29,140,47353,4.1,0,1,21.2,60,0.86
+455062,511604,Maria,Patel,2022-11-27,Level-1,Hydraulics,In-House Maintenance,58.61,Rotating,24,2023-12-22,142,85380,3.0,0,25,12.3,45,11.86
+458693,604012,Priya,Santos,2014-08-22,Level-1,Sensors,In-House Maintenance,77.32,Rotating,12,2015-07-23,115,95650,2.3,1,11,16.0,48,8.26
+458852,229947,Maria,Kim,2023-05-19,Level-1,Hydraulics,Field Service,67.61,Night,22,2024-07-12,130,33753,4.8,1,15,14.2,25,9.92
+459285,521601,Carlos,Garcia,2016-07-25,Level-1,Mechanical,Field Service,70.8,Day,11,2017-08-30,104,72609,4.7,0,5,8.2,26,5.33
+462181,135785,John,Garcia,2024-04-17,Level-1,Hydraulics,Vendor Support,70.58,Rotating,24,2025-01-26,112,38304,2.3,1,32,69.8,5,5.87
+471816,586340,Wei,Johnson,2010-11-14,Level-2,Sensors,In-House Maintenance,78.47,Day,25,2012-06-29,141,52201,3.6,0,31,69.4,27,1.83
+474401,550186,Carlos,Okafor,2012-05-19,Level-1,General,Field Service,39.76,Rotating,9,2013-07-07,110,88726,2.1,1,2,7.3,3,3.49
+476926,894059,Aisha,Johnson,2019-08-06,Level-1,General,Field Service,57.0,Day,11,2021-08-01,103,10627,4.5,1,6,23.0,38,3.54
+481767,513953,John,Santos,2012-11-04,Level-1,Software,In-House Maintenance,40.28,Night,19,2013-11-05,116,22453,2.0,1,16,14.1,12,2.47
+485348,915633,Sara,Santos,2021-01-24,Level-1,Sensors,Vendor Support,82.34,Evening,14,2022-07-01,103,84352,5.0,1,8,0.5,12,2.41
+487095,239367,Sara,Santos,2012-04-14,Level-1,Mechanical,In-House Maintenance,82.45,Day,1,2013-12-15,145,38366,2.2,1,31,10.0,20,9.37
+491086,983486,Luca,Kim,2010-06-02,Level-1,Mechanical,Field Service,49.17,Evening,20,2011-09-09,115,71833,2.5,0,30,11.4,40,5.69
+491719,858090,Priya,Patel,2023-09-14,Master Tech,Mechanical,In-House Maintenance,54.14,Night,9,2024-09-15,134,85743,4.9,1,38,3.9,38,1.75
+492978,138567,James,Santos,2012-02-16,Level-1,Sensors,In-House Maintenance,34.15,Rotating,7,2012-11-19,118,94499,4.0,1,33,0.9,69,8.52
+496947,602436,John,Müller,2019-12-06,Level-3,Mechanical,In-House Maintenance,25.89,Rotating,21,2021-10-20,139,81267,3.0,1,38,0.2,15,9.11
+500242,782718,James,Garcia,2013-06-06,Level-2,Sensors,In-House Maintenance,59.87,Rotating,19,2014-01-03,130,14554,4.8,1,39,12.0,21,1.43
+510916,568225,Maria,Smith,2023-03-29,Level-1,Sensors,Field Service,91.03,Evening,4,2025-01-29,106,52287,2.8,1,13,11.2,9,6.73
+511763,371866,Aisha,Johnson,2020-08-06,Level-2,Sensors,Vendor Support,44.76,Night,20,2022-05-14,110,15901,2.1,1,1,54.4,22,9.79
+512701,244300,Sara,Kim,2017-09-25,Level-1,Electrical,In-House Maintenance,69.89,Day,20,2019-08-04,148,98829,3.5,1,25,22.1,78,5.72
+512800,731867,Priya,Rossi,2013-05-15,Level-1,Electrical,In-House Maintenance,48.02,Night,11,2015-01-31,102,70778,3.5,1,11,41.8,20,7.11
+512948,370961,Priya,Kim,2022-06-25,Level-1,Software,In-House Maintenance,30.04,Night,28,2024-03-13,140,53005,4.6,1,23,23.7,52,9.17
+513997,840290,Sara,Müller,2017-03-25,Level-2,Hydraulics,Remote Ops,29.58,Day,6,2018-01-13,123,88057,2.1,1,39,8.4,67,8.27
+524260,105004,Aisha,Garcia,2019-07-16,Level-2,Software,In-House Maintenance,39.28,Day,20,2020-04-25,141,50638,4.0,1,5,24.3,67,3.05
+533794,722674,Fatima,Chen,2014-10-10,Level-2,Software,In-House Maintenance,22.39,Evening,6,2015-08-26,109,91220,4.0,0,1,0.0,24,11.61
+535226,965789,James,Rossi,2012-05-24,Level-1,Hydraulics,In-House Maintenance,85.62,Day,19,2014-05-06,105,35589,2.9,1,8,28.8,57,2.66
+539116,210748,Luca,Santos,2017-01-08,Level-2,Hydraulics,Vendor Support,36.87,Day,11,2018-09-09,126,52148,3.1,1,19,54.8,27,3.42
+545601,148633,John,Patel,2011-06-24,Level-2,Electrical,Vendor Support,27.3,Night,23,2012-06-19,104,64791,2.4,1,39,17.0,62,6.42
+546736,446228,John,Kim,2024-07-03,Master Tech,Mechanical,Remote Ops,51.11,Rotating,26,2026-03-08,101,61006,3.8,0,21,22.5,17,6.81
+549321,232983,Carlos,Chen,2012-10-04,Level-1,Mechanical,In-House Maintenance,91.95,Evening,9,2013-04-28,114,15836,2.0,1,16,20.8,47,0.59
+560742,529545,Wei,Santos,2018-12-26,Level-2,General,Field Service,36.36,Evening,21,2020-07-21,129,24384,2.7,1,9,75.1,75,7.94
+563636,829857,James,Kim,2013-09-06,Level-1,Software,In-House Maintenance,24.58,Rotating,20,2014-04-13,120,94644,3.3,1,19,5.9,39,8.19
+564156,808671,Aisha,Chen,2021-04-15,Level-1,Electrical,Vendor Support,30.84,Rotating,18,2021-10-13,139,69735,3.3,1,32,0.9,67,2.86
+565698,676675,James,Garcia,2018-01-06,Level-1,Hydraulics,In-House Maintenance,37.12,Day,28,2018-09-04,139,70858,2.1,0,35,1.8,65,5.64
+568782,382530,Sara,Rossi,2016-08-01,Level-1,Software,In-House Maintenance,80.04,Day,6,2017-12-13,148,77837,5.0,1,22,25.0,20,9.36
+573718,816926,Priya,Smith,2014-08-06,Level-1,Electrical,Remote Ops,79.15,Day,17,2016-01-10,126,32721,4.0,1,28,2.8,78,9.85
+576241,908061,Wei,Müller,2023-08-17,Level-3,Electrical,Remote Ops,73.49,Evening,10,2025-04-12,114,82410,4.3,1,19,4.2,63,5.21
+578765,725914,Luca,Smith,2018-05-17,Level-1,General,Field Service,81.46,Rotating,8,2020-04-03,135,80574,2.4,1,34,0.4,5,10.34
+586005,932348,Fatima,Müller,2022-09-30,Level-3,General,In-House Maintenance,31.6,Evening,3,2024-03-19,127,60217,2.9,1,37,28.4,61,1.23
+587982,923915,Luca,Santos,2012-06-11,Level-2,Electrical,Vendor Support,93.54,Day,19,2014-02-02,139,57056,4.4,1,11,11.5,61,9.79
+592319,281920,Carlos,Garcia,2024-09-07,Level-1,Electrical,In-House Maintenance,37.29,Day,6,2025-06-17,124,33893,2.8,1,24,2.0,56,9.73
+592400,448190,John,Chen,2023-07-20,Level-1,Hydraulics,Vendor Support,46.2,Rotating,29,2024-07-15,145,62868,4.6,1,10,0.4,15,9.65
+593477,561269,Fatima,Okafor,2014-04-24,Level-2,Sensors,Field Service,90.03,Evening,20,2015-09-25,143,62752,3.4,1,35,7.2,71,10.51
+597786,951747,Sara,Okafor,2018-03-06,Level-1,Software,Vendor Support,88.8,Evening,1,2019-05-24,119,70738,2.3,0,32,1.3,18,4.8
+598885,338015,Luca,Okafor,2012-02-26,Level-2,Software,Field Service,82.95,Night,13,2013-04-22,139,59846,4.1,1,29,10.5,28,1.07
+601230,420971,Aisha,Johnson,2013-05-20,Level-3,Software,Remote Ops,87.23,Evening,6,2014-03-11,126,61305,4.9,1,37,26.4,2,11.29
+604726,226301,Fatima,Okafor,2010-08-31,Level-1,Software,Vendor Support,54.07,Day,20,2011-06-26,147,80911,3.7,1,8,11.5,38,9.23
+607873,940496,Wei,Garcia,2014-04-09,Level-1,Electrical,Field Service,36.53,Day,27,2014-11-23,103,71796,4.7,1,27,24.6,66,10.53
+608862,326853,Carlos,Johnson,2018-01-06,Level-3,Electrical,Vendor Support,44.18,Evening,9,2019-01-05,126,97617,2.6,0,29,0.5,0,2.0
+613031,145838,Priya,Kim,2013-05-09,Level-3,Hydraulics,In-House Maintenance,42.73,Night,5,2014-08-31,126,48242,2.9,1,13,0.6,79,10.82
+616318,808540,Aisha,Smith,2018-11-02,Level-1,Hydraulics,Field Service,69.51,Day,11,2019-11-03,148,45737,4.5,1,2,25.1,15,5.08
+619955,500635,John,Okafor,2024-05-09,Level-3,Hydraulics,Field Service,73.01,Evening,3,2026-01-07,142,74694,5.0,1,16,35.4,11,5.18
+620527,782329,Carlos,Smith,2022-06-04,Level-2,Software,Remote Ops,48.05,Night,20,2023-10-20,111,44116,3.4,1,28,7.5,73,5.96
+626795,848382,Carlos,Smith,2020-12-15,Level-2,Hydraulics,Vendor Support,61.19,Evening,22,2021-08-14,103,57213,4.5,1,20,13.6,48,11.5
+633019,651322,Wei,Chen,2019-06-08,Level-3,Sensors,In-House Maintenance,47.24,Rotating,12,2020-12-20,107,37303,2.7,1,36,63.8,33,1.01
+645129,991711,Fatima,Rossi,2016-12-16,Level-1,Sensors,Field Service,77.26,Night,5,2018-09-09,109,38655,3.7,0,26,4.8,48,7.52
+648153,702972,Aisha,Okafor,2017-05-27,Level-2,Electrical,Vendor Support,27.38,Night,14,2018-03-28,119,64437,2.3,1,34,1.6,18,0.58
+650379,924146,Wei,Santos,2020-11-11,Level-1,Electrical,Field Service,37.34,Evening,3,2022-06-28,133,54955,4.0,0,12,6.4,16,10.5
+650397,264415,Maria,Smith,2014-07-24,Level-1,Software,Field Service,51.17,Day,26,2016-02-09,129,17304,2.3,1,30,3.4,45,4.44
+651637,730745,Fatima,Johnson,2018-01-11,Level-2,Mechanical,Field Service,86.17,Rotating,24,2019-04-26,106,95944,3.5,1,12,2.2,5,6.32
+655165,823660,James,Okafor,2018-09-28,Master Tech,Electrical,Vendor Support,90.35,Evening,21,2019-05-28,108,90043,3.2,1,4,0.9,14,8.36
+661705,135096,Carlos,Johnson,2021-03-06,Level-2,General,Vendor Support,92.25,Day,12,2022-11-17,144,65686,4.3,1,38,13.1,55,7.73
+663407,306807,John,Okafor,2023-06-24,Level-1,Sensors,In-House Maintenance,91.73,Evening,22,2024-04-03,143,66069,2.3,0,25,10.3,7,6.48
+664533,491543,Priya,Chen,2021-09-05,Level-1,Mechanical,In-House Maintenance,32.35,Night,24,2023-06-18,126,19230,2.1,1,30,20.4,78,4.52
+664644,857630,Maria,Kim,2017-03-17,Level-1,Software,Field Service,46.3,Rotating,2,2017-09-16,146,76725,3.1,1,26,1.2,21,2.15
+664912,579789,James,Müller,2021-11-14,Master Tech,Hydraulics,Vendor Support,75.39,Day,9,2023-11-11,148,37792,3.8,1,18,58.3,8,8.38
+668230,896599,Sara,Müller,2018-07-24,Level-1,Electrical,In-House Maintenance,24.04,Rotating,10,2020-01-01,114,34479,3.2,1,9,10.8,77,7.68
+671725,742534,James,Santos,2010-03-18,Level-3,Software,In-House Maintenance,25.06,Rotating,23,2010-12-17,107,89628,4.0,1,17,6.0,18,7.7
+672791,737292,Aisha,Smith,2024-05-02,Level-2,Electrical,In-House Maintenance,70.74,Day,5,2026-01-17,137,62794,2.3,0,7,4.7,64,0.78
+674917,801250,James,Patel,2015-04-23,Level-2,Electrical,Field Service,77.05,Rotating,17,2017-01-15,114,79067,2.3,1,2,63.3,54,2.99
+677729,124342,Aisha,Kim,2012-09-22,Level-2,Mechanical,Vendor Support,33.95,Day,15,2014-06-30,107,63223,3.0,1,37,22.2,17,3.95
+678684,812416,Wei,Smith,2018-11-30,Level-1,Hydraulics,In-House Maintenance,59.63,Rotating,20,2019-12-07,142,46685,2.7,1,39,23.6,46,11.69
+685226,313945,James,Kim,2012-10-06,Level-2,Hydraulics,In-House Maintenance,94.58,Rotating,1,2014-09-02,138,22282,2.2,1,24,35.2,78,3.85
+688481,442317,Maria,Santos,2021-01-17,Level-1,Software,Field Service,93.08,Rotating,14,2022-05-04,119,60249,3.5,1,19,14.4,79,7.66
+690456,734018,Luca,Müller,2021-05-03,Level-1,Software,In-House Maintenance,93.26,Evening,27,2022-10-09,145,94938,3.6,1,3,47.2,46,2.51
+691085,605742,Wei,Okafor,2011-07-06,Level-1,Sensors,Field Service,87.63,Day,24,2013-05-05,113,46463,4.1,1,19,3.2,24,4.99
+696438,679158,James,Rossi,2018-02-10,Level-2,Software,Remote Ops,84.53,Day,10,2018-09-16,106,84915,4.2,1,26,33.4,37,2.03
+697994,949167,Priya,Smith,2023-05-14,Master Tech,Software,In-House Maintenance,23.87,Night,1,2024-07-25,103,51629,3.1,1,8,11.4,20,4.79
+706436,656065,Wei,Santos,2012-05-24,Level-3,General,Field Service,66.58,Night,8,2012-12-14,128,99623,2.6,1,9,6.7,1,2.48
+707067,442467,Fatima,Garcia,2023-10-24,Level-1,Hydraulics,Vendor Support,89.3,Night,3,2024-11-22,133,82687,4.9,1,25,25.4,24,1.39
+707845,993113,James,Santos,2024-03-09,Level-1,Electrical,In-House Maintenance,80.73,Rotating,19,2025-05-07,110,59186,3.3,1,32,46.1,60,2.1
+708283,495292,Aisha,Chen,2011-04-27,Level-1,Sensors,In-House Maintenance,24.88,Rotating,25,2012-02-17,134,44054,4.6,1,39,8.8,34,4.18
+709986,920032,Luca,Kim,2018-12-20,Level-3,Mechanical,Field Service,30.65,Night,26,2020-12-14,149,86821,4.3,1,24,22.1,10,3.9
+710041,297119,Fatima,Kim,2022-06-22,Level-3,Electrical,In-House Maintenance,52.68,Night,27,2024-04-06,133,40744,3.6,1,26,8.2,24,10.7
+725444,278408,James,Kim,2012-04-11,Level-1,Sensors,Vendor Support,78.28,Night,2,2013-12-29,144,57397,4.4,1,26,8.4,71,10.7
+725767,508976,Maria,Kim,2019-02-24,Level-1,Hydraulics,In-House Maintenance,72.75,Evening,19,2019-11-28,115,87894,2.4,1,38,38.7,32,7.06
+734645,495103,Aisha,Garcia,2010-08-22,Master Tech,Hydraulics,Field Service,29.4,Day,23,2011-08-16,101,41547,2.3,1,9,50.6,18,5.98
+735273,889851,Aisha,Okafor,2020-09-12,Level-1,Mechanical,Field Service,52.71,Evening,12,2022-06-17,113,87302,4.0,1,32,6.0,56,2.14
+740843,810075,Luca,Rossi,2015-02-02,Level-3,Hydraulics,In-House Maintenance,45.61,Rotating,8,2016-09-06,114,27175,4.6,1,16,15.2,76,9.95
+741865,915411,Carlos,Rossi,2014-03-14,Level-3,Sensors,In-House Maintenance,31.91,Rotating,27,2015-10-02,124,99879,4.2,1,39,27.6,1,11.73
+746484,679056,Sara,Garcia,2012-03-10,Level-2,Mechanical,In-House Maintenance,78.91,Night,16,2012-12-01,120,16178,4.1,1,11,30.2,48,3.47
+749015,530126,Aisha,Smith,2020-04-08,Master Tech,Electrical,In-House Maintenance,90.36,Night,6,2022-01-29,112,26483,2.6,1,5,9.9,49,2.33
+751627,208939,Carlos,Müller,2024-08-23,Level-1,Hydraulics,Field Service,24.62,Day,11,2025-10-12,109,61422,3.2,1,23,41.3,74,9.05
+753974,310553,Aisha,Patel,2024-09-30,Level-2,Software,Remote Ops,37.31,Evening,26,2025-12-14,127,25607,2.3,1,17,3.0,33,9.27
+758847,354118,Fatima,Smith,2011-07-05,Level-1,General,In-House Maintenance,67.77,Night,14,2012-01-03,125,52227,4.4,1,5,3.1,41,8.1
+763044,646129,James,Okafor,2010-06-25,Level-1,Mechanical,Field Service,39.19,Night,2,2012-04-07,144,59037,2.8,1,33,21.2,41,7.7
+768014,780868,Priya,Kim,2015-10-22,Level-1,Software,Field Service,48.03,Night,11,2017-10-16,128,54490,4.4,1,1,11.2,51,3.5
+774511,245312,Carlos,Chen,2023-07-09,Level-1,Electrical,Remote Ops,60.52,Night,19,2024-04-06,101,77726,3.5,1,9,10.4,63,11.39
+799245,960642,Priya,Müller,2022-08-05,Level-3,Hydraulics,Field Service,24.31,Rotating,13,2024-07-24,125,54601,3.8,1,24,58.8,27,10.01
+801752,612002,Aisha,Garcia,2019-04-27,Level-2,Software,In-House Maintenance,86.04,Rotating,26,2020-12-23,136,17032,3.3,1,24,28.2,50,7.84
+804346,724378,Carlos,Santos,2013-05-30,Level-2,Mechanical,Vendor Support,82.13,Night,12,2014-07-17,130,72714,3.7,1,1,22.7,29,8.91
+804543,771577,Wei,Müller,2017-12-18,Level-1,Electrical,In-House Maintenance,43.03,Day,10,2018-12-29,106,19972,4.8,1,8,16.9,56,9.75
+811128,281230,Luca,Santos,2024-02-10,Level-3,Software,Remote Ops,52.44,Day,27,2024-11-04,130,97854,2.1,1,37,5.1,59,10.82
+814744,877098,Carlos,Chen,2023-02-26,Level-2,Sensors,In-House Maintenance,35.46,Day,16,2024-11-23,106,73952,3.3,1,20,10.3,79,3.42
+821453,407138,Priya,Johnson,2010-06-27,Level-3,General,Field Service,30.71,Day,4,2011-04-04,104,36340,4.2,1,22,31.4,51,5.22
+824912,148061,Carlos,Garcia,2018-07-01,Master Tech,General,Field Service,61.54,Evening,25,2020-03-24,136,76078,3.2,1,20,1.8,65,11.03
+829462,782596,Aisha,Kim,2022-08-07,Level-2,Electrical,In-House Maintenance,90.33,Rotating,22,2023-04-07,139,68857,2.4,1,31,12.7,72,3.55
