@@ -130,3 +130,17 @@ python manage.py runserver
 ```
 Once the server is running, access the web portal at:
 👉 **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**
+
+## Dashboards Show
+
+### Dashboard Ringkasan
+![alt text](docs/screenshots/dashboard_ringkasan.png)
+
+### Dashboard Armada Robot
+![alt text](docs/screenshots/armada_robot.png)
+
+### ROI Simulation
+![alt text](docs/screenshots/simulasi_roi.png)
+
+### Warehouse AI Copilot
+![alt text](docs/screenshots/warehouse_ai_copilot.png)
